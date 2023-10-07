@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0-windows10.0.17763.0</TargetFramework>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
@@ -16,7 +18,8 @@
     <AssemblyTitle>WinStoreLinks</AssemblyTitle>
     <AssemblyVersion>2023.10.1</AssemblyVersion>
     <RootNamespace>Net.Katrea.WinStoreLinks</RootNamespace>
-    <!--<ApplicationIcon>browser.ico</ApplicationIcon>-->
+    <!--<ApplicationIcon>icon.ico</ApplicationIcon>-->
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
 
   </PropertyGroup>
 

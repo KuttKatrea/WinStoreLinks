@@ -1,0 +1,19 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - v*
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.x
+    - run: dotnet restore --locked-mode
+    - run: dotnet publish -c Release
+    - run: gh release upload ${{ github.ref_name) }} ./WinStoreLinks/bin/Release/net6.0-windows10.0.17763.0/win-x64/publish/*
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
