@@ -58,6 +58,13 @@ void CreateLinks(CommandLineOptions commandLineOptions)
 
 void CreateLink(string linkFolder, string appFamily, string appId, string appName, string appDescription)
 {
+    var targetFile = Path.Combine(linkFolder, $"{appName}.lnk");
+
+    if (File.Exists(targetFile))
+    {
+        return;
+    }
+    
     IShellLink link = (IShellLink)new ShellLink();
 
     // setup shortcut information
@@ -65,7 +72,7 @@ void CreateLink(string linkFolder, string appFamily, string appId, string appNam
     link.SetPath($@"shell:appsFolder\{appFamily}!{appId}");
 
     // save it
-    ((IPersistFile)link).Save(Path.Combine(linkFolder, $"{appName}.lnk"), false);
+    ((IPersistFile)link).Save(targetFile, false);
 }
 
 var parser = new CommandLineParser(typeof(CommandLineOptions));
